@@ -11,6 +11,7 @@ CREATE TABLE `Endereco` (
   `numero` varchar(6) NOT NULL,
   `complemento` varchar(20)
 );
+
 CREATE TABLE `Pessoas` (
   `id_pessoa` int PRIMARY KEY AUTO_INCREMENT,
   `tipo_de_cadastro` varchar(11),
@@ -29,4 +30,28 @@ CREATE TABLE `Facilitadores` (
    `area_atuacao`varchar (20),
    `salario` int NOT NULL, 
    `id_pessoa` int
+);
+
+CREATE TABLE `Estudantes` (
+  `id_estudante` int PRIMARY KEY AUTO_INCREMENT,
+  `frequencia` int DEFAULT 0,
+  `id_pessoa` int
+);
+
+CREATE TABLE `Modulos` (
+  `id_modulo` int PRIMARY KEY AUTO_INCREMENT,
+  `nome` varchar(100) NOT NULL,
+  `modulo` INT NOT NULL
+);
+
+CREATE TABLE `Cursos` (
+  `id_curso` int PRIMARY KEY AUTO_INCREMENT,
+  `nome` varchar(255) NOT NULL,
+  `tempo_duracao` int NOT NULL,
+  `custo` int NOT NULL
+);
+
+CREATE TABLE `Cursos_modulos` (
+  `id_curso` int,
+  `id_modulo` int
 );
