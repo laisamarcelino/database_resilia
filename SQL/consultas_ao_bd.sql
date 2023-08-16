@@ -1,4 +1,4 @@
-#1. Selecionar a quantidade total de estudantes cadastrados no banco;
+-- #1. Selecionar a quantidade total de estudantes cadastrados no banco;
 
 SELECT 
     count(id_estudante) as total_de_estudantes
@@ -6,7 +6,7 @@ FROM
     resilia.estudantes;
 
 
-#2. Selecionar quais pessoas facilitadoras atuam em mais de uma turma;
+-- #2. Selecionar quais pessoas facilitadoras atuam em mais de uma turma;
 
 CREATE VIEW nome_id_funcionario AS
 SELECT 
@@ -39,7 +39,7 @@ WHERE
     (area_atuacao = 'Hard' OR area_atuacao = 'Soft') AND (id_facilitador_contador.contador > 1);
 
 
-#3. Criar uma view que selecione a porcentagem de estudantes com status de evasão agrupados por turma;
+-- #3. Criar uma view que selecione a porcentagem de estudantes com status de evasão agrupados por turma;
 
 CREATE VIEW frequencia_estudante AS
 SELECT 
@@ -67,3 +67,22 @@ group by
     estudantes_turmas.id_turma;
 
 select * from taxa_de_evasao;
+
+-- #4. Quais são os facilitadores e seus respectivos salários em um curso de duração superior a um determinado valor?
+
+SELECT 
+    f.id_facilitador,
+    f.area_atuacao,
+    f.salario,
+    c.nome AS nome_curso
+FROM
+    Facilitadores AS f
+        JOIN
+    Facilitadores_turma AS ft ON f.id_facilitador = ft.id_facilitador
+        JOIN
+    Turmas AS t ON ft.id_turma = t.id_turma
+        JOIN
+    Cursos AS c ON t.id_curso = c.id_curso
+WHERE
+    c.tempo_duracao > 5
+ORDER BY id_facilitador;
