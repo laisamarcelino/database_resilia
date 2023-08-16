@@ -11,3 +11,22 @@ CREATE TABLE `Endereco` (
   `numero` varchar(6) NOT NULL,
   `complemento` varchar(20)
 );
+CREATE TABLE `Pessoas` (
+  `id_pessoa` int PRIMARY KEY AUTO_INCREMENT,
+  `tipo_de_cadastro` varchar(11),
+  `nome` varchar(255) NOT NULL,
+  `cpf` varchar(11),
+  `data_nascimento` date NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `telefone` varchar(14) NOT NULL,
+  `login` varchar(255) NOT NULL,
+  `senha` varchar(14) NOT NULL,
+  `endereco_id` int
+);
+
+CREATE TABLE `Facilitadores` (
+  `id_facilitador` int PRIMARY KEY AUTO_INCREMENT,                                                   
+   `area_atuacao`varchar (20),
+   `salario` int NOT NULL, 
+   `id_pessoa` int
+);
