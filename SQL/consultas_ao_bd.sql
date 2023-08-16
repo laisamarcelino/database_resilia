@@ -37,3 +37,33 @@ INNER JOIN
     id_facilitador_contador ON id_facilitador_contador.id_facilitador = facilitadores.id_facilitador
 WHERE
     (area_atuacao = 'Hard' OR area_atuacao = 'Soft') AND (id_facilitador_contador.contador > 1);
+
+
+#3. Criar uma view que selecione a porcentagem de estudantes com status de evasão agrupados por turma;
+
+CREATE VIEW frequencia_estudante AS
+SELECT 
+   estudantes.frequencia,
+   estudantes.id_estudante
+FROM
+   resilia.estudantes
+INNER JOIN
+   pessoas ON estudantes.id_pessoa = pessoas.id_pessoa
+WHERE
+   estudantes.frequencia < 75;
+
+CREATE VIEW taxa_de_evasao AS
+SELECT 
+    (COUNT(frequencia) / 50) AS porcentagem_evasao,
+    estudantes_turmas.id_turma,
+    turmas.nome_sala
+FROM 
+	frequencia_estudante
+INNER JOIN 
+    estudantes_turmas ON frequencia_estudante.id_estudante = estudantes_turmas.id_estudante
+INNER JOIN
+    turmas ON estudantes_turmas.id_turma = turmas.id_turma
+group by
+    estudantes_turmas.id_turma;
+
+select * from taxa_de_evasao;
