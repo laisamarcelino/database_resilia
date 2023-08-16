@@ -86,3 +86,26 @@ FROM
 WHERE
     c.tempo_duracao > 5
 ORDER BY id_facilitador;
+
+-- #5. Qual é a média de notas das avaliações para cada uma das turmas?
+
+CREATE VIEW id_turma_nota as
+SELECT 
+    id_turma,
+	avaliacoes.nota
+FROM
+    estudantes_turmas
+INNER JOIN
+    avaliacoes ON avaliacoes.id_avaliacao = estudantes_turmas.id_avaliacao;
+
+#Conta a quantidade de alunos por turma 
+
+SELECT 
+    AVG(nota) as media,
+    id_turma_nota.id_turma,
+    turmas.nome_sala
+FROM
+    id_turma_nota
+INNER JOIN
+     turmas ON id_turma_nota.id_turma = turmas.id_turma
+GROUP BY id_turma;
