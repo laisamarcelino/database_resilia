@@ -55,3 +55,22 @@ CREATE TABLE `Cursos_modulos` (
   `id_curso` int,
   `id_modulo` int
 );
+
+CREATE TABLE `Turmas` (
+  `id_turma` int PRIMARY KEY AUTO_INCREMENT,
+  `nome_sala` varchar(100) NOT NULL,
+  `id_curso` int
+);
+
+CREATE TABLE `Avaliacoes` (
+  `id_avaliacao` int PRIMARY KEY AUTO_INCREMENT,
+  `data_avaliacao` date,
+  `nota` decimal(4, 2)
+);
+
+CREATE TABLE `Estudantes_turmas` (
+  `id_matricula` int PRIMARY KEY auto_increment,
+  `id_estudante` int,
+  `id_turma` int,
+  `id_avaliacao` int 
+);
