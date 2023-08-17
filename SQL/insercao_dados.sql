@@ -343,10 +343,10 @@ VALUES
 
 INSERT INTO Cursos (nome, tempo_duracao, custo) 
 VALUES
-('Full Stack JavaScript', 6, 10.000),
-('Full Stack Java', 6, 15.000),
-('Análise de Sistemas', 7, 9.000),
-('Data Analytics', 6, 11.000);
+('Full Stack JavaScript', 6, 10000),
+('Full Stack Java', 6, 15000),
+('Análise de Sistemas', 7, 9000),
+('Data Analytics', 6, 11000);
 
 INSERT INTO Turmas (nome_sala, id_curso)
 VALUES
