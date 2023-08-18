@@ -98,7 +98,7 @@ FROM
 INNER JOIN
     avaliacoes ON avaliacoes.id_avaliacao = estudantes_turmas.id_avaliacao;
 
-#Conta a quantidade de alunos por turma 
+-- # Conta a quantidade de alunos por turma 
 
 SELECT 
     AVG(nota) as media,
@@ -109,3 +109,15 @@ FROM
 INNER JOIN
      turmas ON id_turma_nota.id_turma = turmas.id_turma
 GROUP BY id_turma;
+
+-- #6: Quais alunos moram em São Paulo?
+SELECT 
+   pessoas.nome,
+   endereco.*
+FROM 
+   pessoas
+INNER JOIN
+   endereco ON pessoas.endereco_id = endereco.endereco_id
+WHERE
+   (pessoas.tipo_de_cadastro = 'Aluno') AND (endereco.cidade = 'São Paulo');
+

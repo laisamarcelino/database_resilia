@@ -74,3 +74,30 @@ CREATE TABLE `Estudantes_turmas` (
   `id_turma` int,
   `id_avaliacao` int 
 );
+
+CREATE TABLE `Facilitadores_turma` (
+  `id_facilitador` int,
+  `id_turma` int
+);
+
+ALTER TABLE `Pessoas` ADD FOREIGN KEY (`endereco_id`) REFERENCES `Endereco` (`endereco_id`);
+
+ALTER TABLE `Facilitadores` ADD FOREIGN KEY (`id_pessoa`) REFERENCES `Pessoas` (`id_pessoa`);
+
+ALTER TABLE `Estudantes` ADD FOREIGN KEY (`id_pessoa`) REFERENCES `Pessoas` (`id_pessoa`);
+
+ALTER TABLE `Cursos_modulos` ADD FOREIGN KEY (`id_curso`) REFERENCES `Cursos` (`id_curso`);
+
+ALTER TABLE `Cursos_modulos` ADD FOREIGN KEY (`id_modulo`) REFERENCES `Modulos` (`id_modulo`);
+
+ALTER TABLE `Turmas` ADD FOREIGN KEY (`id_curso`) REFERENCES `Cursos` (`id_curso`);
+
+ALTER TABLE `Estudantes_turmas` ADD FOREIGN KEY (`id_estudante`) REFERENCES `Estudantes` (`id_estudante`);
+
+ALTER TABLE `Estudantes_turmas` ADD FOREIGN KEY (`id_turma`) REFERENCES `Turmas` (`id_turma`);
+
+ALTER TABLE `Estudantes_turmas` ADD FOREIGN KEY (`id_avaliacao`) REFERENCES `Avaliacoes` (`id_avaliacao`);
+
+ALTER TABLE `Facilitadores_turma` ADD FOREIGN KEY (`id_facilitador`) REFERENCES `Facilitadores` (`id_facilitador`);
+
+ALTER TABLE `Facilitadores_turma` ADD FOREIGN KEY (`id_turma`) REFERENCES `Turmas` (`id_turma`);
