@@ -1,0 +1,8 @@
+version: "3.2"
+
+services:
+  mysqldb:
+    container_name: compose
+    image: dockerzinho
+    ports:
+      - "3305:3306"
